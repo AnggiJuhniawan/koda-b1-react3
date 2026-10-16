@@ -1,22 +1,25 @@
 // import { useEffect, useState } from "react";
 
-import { useRef, useState } from "react";
+// import { useRef } from "react";
+import Login from "./Components/Login";
 
 // import { filterUsers, getUsers } from "./utils/filterUsers";
 // import Button from "./Components/Sum";
 
 function App() {
   // Uncontrolled
-  const emailRef = useRef(null);
-  function handleSubmit(event) {
-    event.preventDefault();
-    const email = emailRef.current.value;
+  // const emailRef = useRef(null);
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   const email = emailRef.current.value;
 
-    alert(`Email : ${email}`);
-  }
+  //   // alert(`Email : ${email}`);
+  //   console.log(`Email : ${email}`);
+  //   // <p>Email : {email}</p>
+  // }
 
   // Controlled
-  const [email, setEmail] = useState("");
+
   // =========================================
   // const [users, setUsers] = useState([]);
   // const [search, setSearch] = useState("");
@@ -53,7 +56,7 @@ function App() {
   return (
     <main className="mx-auto max-w-xl p-6">
       {/* Uncontrolled */}
-      <h1>Uncontrolled Input</h1>
+      {/* <h1>Uncontrolled Input</h1>
       <form action="" onSubmit={handleSubmit}>
         <input
           ref={emailRef}
@@ -67,21 +70,13 @@ function App() {
         >
           Send
         </button>
-      </form>
+      </form> */}
+      {/* <p className="">Email: {emailRef}</p> */}
 
       {/* End Uncontrolled */}
 
       {/* Controlled */}
-      <h1 className="mt-5">Controlled Input</h1>
-
-      <input
-        type="text"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-        placeholder="Masukkan Email"
-        className="mt-4 rounded-lg border p-3"
-      />
-      <p className="mt-4">Email: {email}</p>
+      <Login />
       {/* End Controlled */}
       {/* ================================== */}
       {/* <h1 className="mb-4 text-2xl font-bold">Filter Users</h1>
