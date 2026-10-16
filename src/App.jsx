@@ -1,44 +1,90 @@
-import { useEffect, useState } from "react";
-import { filterUsers, getUsers } from "./utils/filterUsers";
+// import { useEffect, useState } from "react";
 
+import { useRef, useState } from "react";
+
+// import { filterUsers, getUsers } from "./utils/filterUsers";
 // import Button from "./Components/Sum";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  // Uncontrolled
+  const emailRef = useRef(null);
+  function handleSubmit(event) {
+    event.preventDefault();
+    const email = emailRef.current.value;
 
-  useEffect(() => {
-    let ignore = false;
-    async function loadUsers() {
-      try {
-        const data = await getUsers();
+    alert(`Email : ${email}`);
+  }
 
-        if (!ignore) {
-          setUsers(data);
-        }
-      } catch (err) {
-        if (!ignore) {
-          setError(err instanceof Error ? err.message : "Terjadi Kesalahan");
-        }
-      } finally {
-        if (!ignore) {
-          setLoading(false);
-        }
-      }
-    }
-    loadUsers();
+  // Controlled
+  const [email, setEmail] = useState("");
+  // =========================================
+  // const [users, setUsers] = useState([]);
+  // const [search, setSearch] = useState("");
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState("");
 
-    return () => {
-      ignore = true;
-    };
-  }, []);
+  // useEffect(() => {
+  //   let ignore = false;
+  //   async function loadUsers() {
+  //     try {
+  //       const data = await getUsers();
 
-  const filterUser = filterUsers(users, search);
+  //       if (!ignore) {
+  //         setUsers(data);
+  //       }
+  //     } catch (err) {
+  //       if (!ignore) {
+  //         setError(err instanceof Error ? err.message : "Terjadi Kesalahan");
+  //       }
+  //     } finally {
+  //       if (!ignore) {
+  //         setLoading(false);
+  //       }
+  //     }
+  //   }
+  //   loadUsers();
+
+  //   return () => {
+  //     ignore = true;
+  //   };
+  // }, []);
+
+  // const filterUser = filterUsers(users, search);
   return (
     <main className="mx-auto max-w-xl p-6">
-      <h1 className="mb-4 text-2xl font-bold">Filter Users</h1>
+      {/* Uncontrolled */}
+      <h1>Uncontrolled Input</h1>
+      <form action="" onSubmit={handleSubmit}>
+        <input
+          ref={emailRef}
+          type="email"
+          placeholder="Masukkan Email"
+          className="rounded-lg border p-3"
+        />
+        <button
+          type="submit"
+          className="ml-3 rounded-lg bg-black px-5 py-3 text-white"
+        >
+          Send
+        </button>
+      </form>
+
+      {/* End Uncontrolled */}
+
+      {/* Controlled */}
+      <h1 className="mt-5">Controlled Input</h1>
+
+      <input
+        type="text"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        placeholder="Masukkan Email"
+        className="mt-4 rounded-lg border p-3"
+      />
+      <p className="mt-4">Email: {email}</p>
+      {/* End Controlled */}
+      {/* ================================== */}
+      {/* <h1 className="mb-4 text-2xl font-bold">Filter Users</h1>
 
       <input
         className="mb-5 w-full rounded-lg border p-3"
@@ -64,7 +110,7 @@ function App() {
             </ul>
           )}
         </>
-      )}
+      )} */}
 
       {/* ============================= */}
       {/* <h1>JSDoc</h1> */}
