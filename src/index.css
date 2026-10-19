@@ -1,1 +1,17 @@
 @import "tailwindcss";
+@theme {
+  --color-rifai-600: blue;
+  --color-brown-700: brown;
+}
+.form-input {
+  @apply mt-4 rounded-lg border p-3;
+}
+.form-input:focus {
+  @apply bg-brown-700;
+}
+.btn {
+  @apply ml-2 rounded-lg border p-3;
+}
+.btn:hover {
+  @apply bg-rifai-600;
+}

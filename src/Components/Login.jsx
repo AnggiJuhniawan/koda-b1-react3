@@ -63,7 +63,7 @@ function Login() {
           type="text"
           {...register("email")}
           placeholder="Masukkan Email"
-          className="mt-4 rounded-lg border p-3"
+          className="form-input"
         />
         {errors.email?.message && (
           <p role="alert" className="mt-1 text-sm text-red-600">
@@ -75,7 +75,7 @@ function Login() {
           type="password"
           {...register("password")}
           placeholder="Masukkan Password"
-          className="mt-4 rounded-lg border p-3"
+          className="form-input"
         />
         {errors.password?.message && (
           <p role="alert" className="mt-1 text-sm text-red-600">
@@ -83,7 +83,7 @@ function Login() {
           </p>
         )}
         {/* <p className="mt-4">Email: {email}</p> */}
-        <button type="Submit" className="ml-2 rounded-lg border p-3">
+        <button type="Submit" className="btn">
           Klik
         </button>
         <button
